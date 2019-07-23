@@ -36,6 +36,9 @@
 
 编译完成后本地出现MNN的动态库。
 
+
+[linux下安装 protobuf ](https://blog.csdn.net/old__captain/article/details/80472388)
+
 ### 交叉编译
 交叉编译工具链可使用[Linaro](https://www.linaro.org/)
 
