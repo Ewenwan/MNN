@@ -38,7 +38,7 @@ MNN不仅支持回调机制，可以在网络运行中插入回调，提取数�
 
 # 代码分析
 
-read model-->create Net(Interpreter) --> 配置backend --> create session --> config input and output --> run session -->（Pipeline --> Unit-->op-->Execution）--> finished
+read model-->create Net(Interpreter) --> 配置backend --> create session --> config input and output --> run session -->（Pipeline --> Unit-->op-->Execution(调用不同后端算子)）--> finished
 
 ## Intro
 MNN is a lightweight deep neural network inference engine. It loads models and do inference on devices. At present, MNN has been integrated in more than 20 apps of Alibaba-inc, such as Taobao, Tmall, Youku and etc., covering live broadcast, short video capture, search recommendation, product searching by image, interactive marketing, equity distribution, security risk control and other scenarios. In addition, MNN is also used on embedded devices, such as IoT.
