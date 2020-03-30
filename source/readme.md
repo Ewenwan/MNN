@@ -7,17 +7,35 @@
 
     cv        计算机视觉处理算法
 
-    math      数学计算库  利用 Tensor 构建 矩阵Matrix
-              提供二维矩阵乘法 Matrix::multi(C,A,B), 先16个数向量计算，剩余4个向量计算，最后普通c语言单个数计算
-              矩阵加法   Matrix::add(C,A,B) , 先16个数向量计算，剩余4个向量计算，最后普通c语言单个数计算
+    math      数学计算库  主要是 为了 Winograd 卷积运算
+           1. 利用 Tensor 构建 矩阵Matrix
+              提供二维矩阵乘法 Matrix::multi(C,A,B), 
+                     先16个数向量计算，剩余4个向量计算，最后普通c语言单个数计算
+              矩阵加法   Matrix::add(C,A,B) , 
+                     先16个数向量计算，剩余4个向量计算，最后普通c语言单个数计算
               矩阵逆运算 Matrix::invert(Tensor* dst, const Tensor* src) 
               矩阵转置   Matrix::transpose(Tensor* dst, const Tensor* src)
               每一行乘一个数 Matrix::mulPerLine(Tensor* C, const Tensor* A, const Tensor* Line)
               每一行除一个数 Matrix::divPerLine(Tensor* C, const Tensor* A, const Tensor* Line)
               矩阵行列式的值 Matrix::matDet(const Tensor* A)
               
-              构建基本的 向量Vec4  各种实例化方法  各种运算符的重载 
+           2. 构建基本的 向量Vec4  各种实例化方法  各种运算符的重载 
+              
+           3. Winograd 因子生成器 WinogradGenerater::WinogradGenerater
+              computeF(const float* a, int alpha);
+              computeT(const float* a, int n);
+              computeL(const float* a, int n);
+              computeB(const float* a, int alpha);
+              computeA(const float* a, int m, int n);
+              computeFDiag(const float* a, int alpha);
+              
+              权重数据重排 WinogradGenerater::transformWeight(const Tensor* weightDest, const Tensor* source)
+                  内存申请 WinogradGenerater::allocTransformWeight(const Tensor* source, int unitCi, int unitCo, bool alloc) 
+                  
+              nchw  ---> n c/4 h w*4
               
               
+              
+                
               
     shape     计算各种op的输入输出形状
