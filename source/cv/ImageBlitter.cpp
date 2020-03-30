@@ -18,6 +18,9 @@ extern "C" {
 void MNNNV21ToRGBUnit(const unsigned char* source, unsigned char* dest, size_t countDiv8, const unsigned char* uv);
 void MNNNV21ToBGRUnit(const unsigned char* source, unsigned char* dest, size_t countDiv8, const unsigned char* uv);
 void MNNNV21ToRGBAUnit(const unsigned char* source, unsigned char* dest, size_t countDiv8, const unsigned char* uv);
+    
+    // 核心 MNNNV21ToBGRUnit函数 使用 汇编-NEON实现
+    // source/backend/cpu/arm/arm32/MNNNV21ToBGRUnit.S 
 }
 
 namespace MNN {
