@@ -18,7 +18,8 @@
                                 _bgr2gray
               NV21图像转RGBA     MNNNV21ToRGBA  一次计算16个  NEON计算
               NV21图像转RGB      MNNNV21ToRGB
-              NV21图像转BGR      MNNNV21ToBGR
+              NV21图像转BGR      MNNNV21ToBGR   核心 MNNNV21ToBGRUnit函数 使用 汇编-NEON实现
+                                source/backend/cpu/arm/arm32/MNNNV21ToBGRUnit.S 
               
               浮点数据
               _blitC1ToFloatC1  char类型单通道 减去均值 乘以归一化参数   neon 一次处理16个数据
@@ -59,3 +60,9 @@
                 
               
     shape     计算各种op的输入输出形状
+    
+            根据输入tensor的维度信息，计算输出tensor的维度信息，并设置输出tensor的数据类型。 
+            继承基类SizeComputer，实现onComputeSize函数，若输入维度信息未知返回false，计算完成后返回true。
+            
+            
+            
